@@ -1,4 +1,5 @@
 module.exports = {
+  devtool: 'cheap-module-source-map',
   entry: "./public/App.js",
   output: {
     path: __dirname + "/public",

@@ -84,7 +84,7 @@
 	//import components
 
 
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+		_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -23051,7 +23051,7 @@
 	// them to the app's store
 	exports.default = (0, _redux.combineReducers)({
 	  languages: _Language_Reducer2.default
-	});
+		});
 
 /***/ },
 /* 196 */
@@ -23084,7 +23084,7 @@
 	    default:
 	      return state;
 	  }
-	};
+		};
 
 /***/ },
 /* 197 */
@@ -23095,7 +23095,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var DELETE_LANGUAGE = exports.DELETE_LANGUAGE = 'DELETE_LANGUAGE';
+		var DELETE_LANGUAGE = exports.DELETE_LANGUAGE = 'DELETE_LANGUAGE';
 
 /***/ },
 /* 198 */
@@ -23263,7 +23263,8 @@
 	    type: types.DELETE_LANGUAGE,
 	    payload: languageIndex
 	  };
-	};
+		};
 
 /***/ }
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
