@@ -1,6 +1,6 @@
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: "./public/App.js",
+  entry: "./public/index.js",
   output: {
     path: __dirname + "/public",
     filename: "bundle.js"
