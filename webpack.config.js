@@ -6,8 +6,8 @@ module.exports = {
     filename: "bundle.js"
   },
   //loader preprocess files before bundling them
-  //babel will convert all JSX into javascript before
-  //bundling
+  //babel will convert all JSX and ES6 into javascript
+  //before bundling
   module: {
     loaders: [
       { exclude: /node_modules/, loader: 'babel-loader',
