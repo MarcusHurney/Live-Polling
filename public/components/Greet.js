@@ -1,5 +1,5 @@
 import React from 'react';
-import ReduxTest from './ReduxTest';
+import ReduxTest from './ReduxTest.jsx';
 
 const Greet = () => {
   return (

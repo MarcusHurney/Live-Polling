@@ -1,21 +1,36 @@
+var path = require('path');
+
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: "./public/index.js",
+  entry: path.join(__dirname, 'public', 'index.js'),
   output: {
-    path: __dirname + "/public",
+    path: path.join(__dirname, 'public'),
     filename: "bundle.js"
   },
   //loader preprocess files before bundling them
-  //babel will convert all JSX and ES6 into javascript
+  //babel will convert all JSX and ES6 into plain javascript
   //before bundling
   module: {
     loaders: [
-      { exclude: /node_modules/, loader: 'babel-loader',
-        query: { presets: ['react', 'es2015']}
+      {
+        test: [/\.js$/, /\.jsx$/],
+        exclude: /(node_modules)/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        loader: 'url-loader?limit=20000'
+        //if an image is bigger than 20000kb
+        //a direct url will be created for the
+        //image asset
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader'
       }
     ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
+  }
 }

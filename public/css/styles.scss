@@ -1,11 +1,15 @@
+$green: #00FF00;
+$red: red;
+
+
 .language:hover {
-  color: red;
+  color: $green;
   cursor: pointer;
   font-size: 2em;
 }
 
 .success {
-  color: green;
+  color: $red;
 }
 
 .marginTop {
