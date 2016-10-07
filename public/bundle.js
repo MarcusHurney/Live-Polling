@@ -28597,6 +28597,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _ActionTypes = __webpack_require__(258);
 
 	var types = _interopRequireWildcard(_ActionTypes);
@@ -28613,7 +28615,7 @@
 	    case types.DELETE_LANGUAGE:
 	      var newLanguages = state.languages;
 	      newLanguages.splice(action.payload, 1);
-	      return { languages: newLanguages };
+	      return _extends({}, state, { languages: newLanguages });
 
 	    default:
 	      return state;
@@ -28736,8 +28738,7 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_ReduxTest2.default, null)
 	      )
-	    ),
-	    _react2.default.createElement('div', { id: 'img-container' })
+	    )
 	  );
 	};
 

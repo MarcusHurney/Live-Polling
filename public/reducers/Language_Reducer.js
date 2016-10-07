@@ -6,7 +6,7 @@ export default (state = INITIAL_STATE, action) => {
     case types.DELETE_LANGUAGE:
       let newLanguages = state.languages;
       newLanguages.splice(action.payload, 1);
-      return { languages: newLanguages };
+      return { ...state, languages: newLanguages };
 
     default:
       return state;
