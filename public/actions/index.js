@@ -1,8 +1,23 @@
 import * as types from './ActionTypes';
 
-export const deleteLanguage = (languageIndex) => {
+// connection actions
+export const makeConnection = () => {
   return {
-    type: types.DELETE_LANGUAGE,
-    payload: languageIndex
+    type: types.CONNECT
   };
-}
+};
+
+export const disconnect = () => {
+  return {
+    type: types.DISCONNECT
+  };
+};
+
+// presenter actions
+
+export const setTitle = title => {
+  return {
+    type: types.SET_PRESENTATION_TITLE,
+    payload: title
+  };
+};

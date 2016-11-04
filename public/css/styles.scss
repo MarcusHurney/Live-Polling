@@ -1,17 +1,20 @@
 $green: #00FF00;
 $red: red;
 
-
-.language:hover {
-  color: $green;
-  cursor: pointer;
-  font-size: 2em;
-}
-
-.success {
-  color: $red;
-}
-
 .marginTop {
-  margin-top: 10em;
+  margin-top: 2em;
+}
+
+.disconnected {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: $red;
+}
+
+.connected {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: $green;
 }

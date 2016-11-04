@@ -2,8 +2,10 @@
 // combineReducers allows you to create multiple reducers and pass
 // them to the app's store
 import { combineReducers } from 'redux';
-import languages from './Language_Reducer';
+import connection from './Connection_Reducer';
+import presenter from './Presenter_Reducer';
 
 export default combineReducers({
-  languages: languages
+  connection,
+  presenter
 });

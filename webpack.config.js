@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: '#cheap-module-source-map',
   entry: path.join(__dirname, 'public', 'index.js'),
   output: {
     path: path.join(__dirname, 'public'),
@@ -17,7 +17,7 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'react', 'stage-0']
         }
       },
       {
