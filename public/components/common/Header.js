@@ -6,6 +6,7 @@ class Header extends Component {
       <header className="row marginTop">
         <div className="col-xs-10">
           <h1>{this.props.title}</h1>
+          <h3>by {this.props.speaker}</h3>
         </div>
         <div className="col-xs-2">
           <div id="connection-status" className={this.props.status}></div>
@@ -17,7 +18,8 @@ class Header extends Component {
 
 Header.propTypes = {
   title: React.PropTypes.string,
-  status: React.PropTypes.string
+  status: React.PropTypes.string,
+  speaker: React.PropTypes.string
 };
 
 export default Header;
