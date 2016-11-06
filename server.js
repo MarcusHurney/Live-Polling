@@ -8,6 +8,8 @@ const io = socketIO(server);
 
 import _ from 'underscore';
 
+import questions from './questions';
+
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
@@ -33,8 +35,15 @@ let audience = [];
 // variable for keeping track of the speaker
 let speaker = {};
 
+let currentQuestion = false;
+
+
 // create connection event
 io.on('connection', socket => {
+
+  // push new connection id to connections array
+  connections.push(socket.id);
+  console.log("Connected: %s sockets connected.", connections.length);
 
   // define disconnect handler -------------------->
   socket.on('disconnect', () => {
@@ -102,16 +111,25 @@ io.on('connection', socket => {
     io.emit('startPresentation', { title, speaker: speaker.name });
   });// end speakerJoin handler -------------------->
 
-  // push new connection id to connections array
-  connections.push(socket.id);
-  console.log("Connected: %s sockets connected.", connections.length);
 
   // emit custom welcome event
   socket.emit('welcome', {
     title,
     audience,
-    speaker: speaker.name
+    speaker: speaker.name,
+    questions,
+    currentQuestion
   });
+
+  socket.on('ask', question => {
+    // set currentQuestion to payload
+    currentQuestion = question;
+    // send current question to connected audience memebers
+    io.emit('ask', currentQuestion);
+    console.log("Question Asked ", question.q);
+  });
+
+
 });// end connection handler -------------------->
 
 server.listen(3000, () => {

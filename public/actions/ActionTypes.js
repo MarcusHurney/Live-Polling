@@ -1,6 +1,3 @@
-// presenter
-export const SET_PRESENTATION_TITLE = 'SET_PRESENTATION_TITLE';
-
 // connection
 export const CONNECT = 'CONNECT';
 export const DISCONNECT = 'DISCONNECT';
@@ -10,4 +7,7 @@ export const JOIN_PRESENTATION_SUCCESS = 'JOIN_PRESENTATION_SUCCESS';
 export const UPDATE_AUDIENCE = 'UPDATE_AUDIENCE';
 
 // speaker
+export const SET_PRESENTATION_TITLE = 'SET_PRESENTATION_TITLE';
 export const SET_SPEAKER = 'SET_SPEAKER';
+export const SET_QUESTIONS = 'SET_QUESTIONS';
+export const SET_CURRENT_QUESTION = 'SET_CURRENT_QUESTION';

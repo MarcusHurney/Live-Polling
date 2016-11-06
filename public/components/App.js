@@ -8,7 +8,9 @@ import {
   setTitle,
   setSpeaker,
   joinPresentationSuccess,
-  updateAudience
+  updateAudience,
+  setQuestions,
+  setCurrentQuestion
 } from '../actions';
 
 import Header from './common/Header';
@@ -46,9 +48,11 @@ class App extends Component {
     });
 
     // define welcome handler
-    socket.on('welcome', ({ title, speaker }) => {
+    socket.on('welcome', ({ title, speaker, questions, currentQuestion }) => {
       this.props.setTitle(title);
       this.props.setSpeaker(speaker);
+      this.props.setQuestions(questions);
+      this.props.setCurrentQuestion(currentQuestion);
     });
 
     // define joined handler
@@ -56,7 +60,6 @@ class App extends Component {
       this.props.joinPresentationSuccess(userMember);
 
       // store new user in sessionStorage
-      console.log(userMember);
       sessionStorage.storedMember = JSON.stringify(userMember);
     });
 
@@ -67,6 +70,10 @@ class App extends Component {
     socket.on('startPresentation', ({ speaker, title }) => {
       this.props.setTitle(title);
       this.props.setSpeaker(speaker);
+    });
+
+    socket.on('ask', question => {
+      this.props.setCurrentQuestion(question);
     });
 
     socket.on('end', ({ title, speaker }) => {
@@ -103,5 +110,7 @@ export default connect(mapStateToProps, {
   setTitle,
   setSpeaker,
   joinPresentationSuccess,
-  updateAudience
+  updateAudience,
+  setQuestions,
+  setCurrentQuestion
 })(App);

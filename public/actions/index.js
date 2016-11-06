@@ -43,3 +43,17 @@ export const setSpeaker = speaker => {
     payload: speaker
   };
 };
+
+export const setQuestions = questions => {
+  return {
+    type: types.SET_QUESTIONS,
+    payload: questions
+  };
+};
+
+export const setCurrentQuestion = question => {
+  return {
+    type: types.SET_CURRENT_QUESTION,
+    payload: question
+  };
+};

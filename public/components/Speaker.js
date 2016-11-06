@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import Display from './common/Display';
 import JoinSpeaker from './common/Join_Speaker';
+import Attendance from './common/Attendance';
+import Questions from './common/Questions';
 
 class Speaker extends Component {
   render() {
@@ -11,7 +14,8 @@ class Speaker extends Component {
       <div>
         <Display if={connectionStatus === 'connected'}>
           <Display if={userMember.name && userMember.typeOfUser === 'speaker'}>
-            <h1>Speaker Stuff</h1>
+            <Questions />
+            <Attendance />
           </Display>
 
           <Display if={!userMember.name}>
