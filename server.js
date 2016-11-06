@@ -37,6 +37,13 @@ let speaker = {};
 
 let currentQuestion = false;
 
+let results = {
+  a: 0,
+  b: 0,
+  c: 0,
+  d: 0
+};
+
 
 // create connection event
 io.on('connection', socket => {
@@ -118,15 +125,29 @@ io.on('connection', socket => {
     audience,
     speaker: speaker.name,
     questions,
-    currentQuestion
+    currentQuestion,
+    results
   });
 
   socket.on('ask', question => {
     // set currentQuestion to payload
     currentQuestion = question;
+    // reset results Object
+    results = {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0
+    };
     // send current question to connected audience memebers
     io.emit('ask', currentQuestion);
     console.log("Question Asked ", question.q);
+  });
+
+  socket.on('answer', ({ choice }) => {
+    results[choice]++;
+    // emit results back to client
+    io.emit('results', results);
   });
 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Display from './common/Display';
 import Join from './common/Join';
+import Ask from './common/Ask';
 
 class Audience extends Component {
   render() {
@@ -18,8 +19,7 @@ class Audience extends Component {
             </Display>
 
             <Display if={this.props.currentQuestion}>
-              <p>Replace this text with ASK component from next lecture </p>
-              <h2>{this.props.currentQuestion.q}</h2>
+              <Ask />
             </Display>
           </Display>{/* userMember.name */}
 

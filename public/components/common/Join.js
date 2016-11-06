@@ -24,6 +24,7 @@ class Join extends Component {
         </div>
         <button className="btn btn-warning">Join</button>
         <Link className="btn btn-warning" to="/speaker">Join as Speaker</Link>
+        <Link className="btn btn-warning" to="/board">See Results Board</Link>
       </form>
     );
   }

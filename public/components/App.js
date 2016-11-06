@@ -2,19 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
 
-import {
-  makeConnection,
-  disconnect,
-  setTitle,
-  setSpeaker,
-  joinPresentationSuccess,
-  updateAudience,
-  setQuestions,
-  setCurrentQuestion
-} from '../actions';
+import * as actions from '../actions';
+import * as styles from '../css/styles.scss';
 
 import Header from './common/Header';
-import * as styles from '../css/styles.scss';
 
 class App extends Component {
   // componentWillMount handles incoming data from server
@@ -48,11 +39,12 @@ class App extends Component {
     });
 
     // define welcome handler
-    socket.on('welcome', ({ title, speaker, questions, currentQuestion }) => {
+    socket.on('welcome', ({ title, speaker, questions, currentQuestion, results }) => {
       this.props.setTitle(title);
       this.props.setSpeaker(speaker);
       this.props.setQuestions(questions);
       this.props.setCurrentQuestion(currentQuestion);
+      this.props.updateResults(results);
     });
 
     // define joined handler
@@ -74,6 +66,15 @@ class App extends Component {
 
     socket.on('ask', question => {
       this.props.setCurrentQuestion(question);
+      this.props.updateCurrentAnswer('');
+      this.props.updateResults({ a: 0, b: 0, c: 0, d: 0 });
+      // reset user's previous answer in sessionStorage
+      // when a new question is asked
+      sessionStorage.answer = '';
+    });
+
+    socket.on('results', results => {
+      this.props.updateResults(results);
     });
 
     socket.on('end', ({ title, speaker }) => {
@@ -104,13 +105,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  makeConnection,
-  disconnect,
-  setTitle,
-  setSpeaker,
-  joinPresentationSuccess,
-  updateAudience,
-  setQuestions,
-  setCurrentQuestion
-})(App);
+export default connect(mapStateToProps, actions)(App);

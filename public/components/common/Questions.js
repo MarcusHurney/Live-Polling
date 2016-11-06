@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class Questions extends Component {
   askQuestion(question) {
+    console.log(question);
     this.props.socket.emit('ask', question);
   }
 

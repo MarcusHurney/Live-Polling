@@ -29,6 +29,20 @@ export const updateAudience = audience => {
   };
 };
 
+export const updateCurrentAnswer = answer => {
+  return {
+    type: types.UPDATE_ANSWER,
+    payload: answer
+  };
+};
+
+export const updateResults = results => {
+  return {
+    type: types.UPDATE_RESULTS,
+    payload: results
+  };
+};
+
 // speaker actions
 export const setTitle = title => {
   return {
